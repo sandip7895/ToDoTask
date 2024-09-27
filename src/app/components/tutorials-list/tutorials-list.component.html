@@ -1,0 +1,38 @@
+<div class="list row">
+  <div class="col-md-8">
+    <div class="input-group mb-3">
+      <input class="form-control" type="text" name="search" [(ngModel)]="title" autocomplete="off"
+        placeholder="Search...">
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary">
+          Search
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-10">
+    <div class="d-flex">
+      <h4>Tutorials List</h4>
+    </div>
+
+    <table class="table">
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Due Date</th>
+        <th>Attachment</th>
+        <th>Action</th>
+      </tr>
+      <tr *ngFor="let tutorial of tutorials | filter:title; let i = index">
+        <td>{{ tutorial.title }}</td>
+        <td>{{ tutorial.description }}</td>
+        <td>{{ tutorial.duedate }}</td>
+        <td>{{ tutorial.attachment }}</td>
+        <td>
+          <a [routerLink]="['/tutorials', i]" class="btn btn-primary">Edit</a> &nbsp; &nbsp;
+          <button (click)="deleteTodo(i)" class="btn btn-danger">Delete</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
